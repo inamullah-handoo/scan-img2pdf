@@ -114,6 +114,7 @@ export class AppComponent {
       const w = imgProps.width * ratio;
       const h = imgProps.height * ratio;
       this.doc.addImage(String(reader.result), "JPEG", x, y, w, h);
+      alert(this.modalShow);
     };
     reader.readAsDataURL(result);
     document.getElementsByTagName('ngx-doc-scanner')[0].remove();
