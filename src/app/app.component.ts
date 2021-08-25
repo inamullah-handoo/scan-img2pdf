@@ -21,7 +21,7 @@ export class AppComponent {
       width: 16,
       height: 16
     },
-    exportImageIcon: 'cloud_download',
+    exportImageIcon: 'arrow_forward',
     editorDimensions: {
       width: '100%',
       height: '100%'

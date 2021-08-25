@@ -1,5 +1,5 @@
-$primary: rgb(63, 81, 181);
-$primary_trans: rgba(63, 81, 181, 0.15);
+$primary: rgb(123, 31, 162);
+$primary_trans: rgba(123, 31, 162, 0.15);
 
 .dropZone {
   border: 2px dashed $primary;
@@ -52,14 +52,6 @@ $icon_size: 64px;
 
     h3 {
       margin: 0;
-    }
-
-    .btns {
-      margin-top: 20px;
-
-      button {
-        margin-right: 10px;
-      }
     }
   }
 }

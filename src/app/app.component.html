@@ -9,7 +9,7 @@
 </ngx-doc-scanner>
 
 <!--Drop Zone & File Input-->
-<div fxFlex="100" fxLayoutAlign="space-around" style="height: 80vh">
+<div fxFlex="100" fxLayoutAlign="space-around" style="height: 80vh; padding: 24px;">
   <div #dropZone
        class="dropZone"
        [ngClass]="{'drop-hover': overZone}"
@@ -35,14 +35,16 @@
 
 <div class="modal" *ngIf="modalShow">
   <div class="modal-content">
-    <h3>Do you want to add another image to the pdf?</h3>
-    <div class="btns">
-      <button mat-raised-button (click)="modalFn(true);">
-        Yes
-      </button>
-      <button mat-raised-button (click)="modalFn(false);">
-        No
-      </button>
+    <h4>Do you want to add another image to the pdf?</h4>
+    <div>
+      <div fxFlex="100"  fxLayoutAlign="space-around">
+        <button mat-raised-button (click)="modalFn(true);" color="primary">
+          Yes
+        </button>
+        <button mat-raised-button (click)="modalFn(false);" color="primary">
+          No
+        </button>
+      </div>
     </div>
   </div>
 </div>
