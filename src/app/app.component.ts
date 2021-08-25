@@ -98,6 +98,7 @@ export class AppComponent {
   // handles the result emitted by the editor
   editResult(result: Blob) {
     this.modalShow = true;
+    alert(this.modalShow);
     let reader = new FileReader();
     reader.onloadend = () => {
       this.image = null;
