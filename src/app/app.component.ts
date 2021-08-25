@@ -24,16 +24,16 @@ export class AppComponent {
     exportImageIcon: 'arrow_forward',
     editorDimensions: {
       width: '100%',
-      height: '90%'
+      height: '78%'
     },
     extraCss: {
       position: 'absolute',
-      top: '56px',
+      top: '115px',
       left: 0
     }
   };
   modalShow: boolean = false; inputShow: boolean = true;
-  doc = new jsPDF();
+  doc = new jsPDF(); showMe: boolean = false;
 
 
   constructor() { }
@@ -55,6 +55,7 @@ export class AppComponent {
   }
 
   loadFile(event: any) {
+
     this.processing = true;
     this.overZone = false;
     let f: File;
@@ -70,6 +71,8 @@ export class AppComponent {
     } else {
       alert("This file type is not supported");
     }
+    document.getElementsByTagName('app-root')[0].removeAttribute("style");
+
   }
 
   isImage(file: File) {
@@ -97,11 +100,10 @@ export class AppComponent {
 
   // handles the result emitted by the editor
   editResult(result: Blob) {
-    this.modalShow = true;
-    alert(this.modalShow);
+    this.showMe = true;
+    // this.modalShow = true;
     let reader = new FileReader();
     reader.onloadend = () => {
-      this.image = null;
       const imgProps = this.doc.getImageProperties(String(reader.result));
       const margin = 0.1;
       const pdfWidth = this.doc.internal.pageSize.width * (1 - margin);
@@ -114,16 +116,16 @@ export class AppComponent {
       const w = imgProps.width * ratio;
       const h = imgProps.height * ratio;
       this.doc.addImage(String(reader.result), "JPEG", x, y, w, h);
-      alert(this.modalShow);
     };
     reader.readAsDataURL(result);
     document.getElementsByTagName('ngx-doc-scanner')[0].remove();
-    document.getElementsByTagName('app-root')[0].removeAttribute("style");
   }
 
   modalFn(val: boolean) {
     this.modalShow = false;
     this.inputShow = true;
+    this.image = null;
+    this.showMe = false;
     document.getElementsByTagName('app-root')[0].removeAttribute("style");
     if (val) {
       this.doc.addPage();

@@ -1,11 +1,20 @@
 <!-- header -->
 <mat-toolbar color="primary">
   <span>Document Scanner</span>
-<div *ngIf="modalShow">----Is this showing</div>
 </mat-toolbar>
+<div *ngIf="showMe">
+  Image added.<br>Add one more?
+  <button mat-raised-button (click)="modalFn(true);" color="primary">
+    Yes
+  </button>
+  <button mat-raised-button (click)="modalFn(false);" color="primary">
+    No
+  </button>
+</div>
 
 <!--Doc Scanner Component-->
-<ngx-doc-scanner *ngIf="image"
+<div>
+  <ngx-doc-scanner *ngIf="image"
                  [file]="image"
                  (editResult)="editResult($event)"
                  (exitEditor)="exitEditor('exit')"
@@ -13,6 +22,7 @@
                  (processing)="editorState($event)"
                  [config]="config">
 </ngx-doc-scanner>
+</div>
 
 <!--Drop Zone & File Input-->
 <div style="padding: 24px;" *ngIf="inputShow">
