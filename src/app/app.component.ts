@@ -97,6 +97,8 @@ export class AppComponent {
 
   // handles the result emitted by the editor
   editResult(result: Blob) {
+    this.modalShow = true;
+    alert('Start');
     let reader = new FileReader();
     reader.onloadend = async () => {
       this.image = null;
@@ -114,7 +116,7 @@ export class AppComponent {
       this.doc.addImage(String(reader.result), "JPEG", x, y, w, h);
     };
     reader.readAsDataURL(result);
-    this.modalShow = true;
+    alert('End');
     document.getElementsByTagName('ngx-doc-scanner')[0].remove();
   }
 
