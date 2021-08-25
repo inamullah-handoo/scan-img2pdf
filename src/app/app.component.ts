@@ -139,9 +139,7 @@ export class AppComponent {
   editorState(processing: any) {
     this.processing = null;
     this.processing = processing;
-    if (document.getElementsByTagName('button')[0].innerHTML.indexOf('Exit') > 0 || document.getElementsByTagName('button')[0].innerHTML.indexOf('Back') > 0) {
-
-    } else {
+    if (document.getElementsByTagName('button')[0] && !(document.getElementsByTagName('button')[0].innerHTML.indexOf('Exit') > 0 || document.getElementsByTagName('button')[0].innerHTML.indexOf('Back') > 0)) {
       let arr = document.getElementsByTagName('button');
       for (let i = 0; i < arr.length; i++) {
         const el = arr[i];
