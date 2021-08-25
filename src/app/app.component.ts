@@ -118,6 +118,7 @@ export class AppComponent {
     };
     reader.readAsDataURL(result);
     document.getElementsByTagName('ngx-doc-scanner')[0].remove();
+    document.getElementsByTagName('app-root')[0].removeAttribute("style");
   }
 
   modalFn(val: boolean) {
