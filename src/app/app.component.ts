@@ -32,7 +32,6 @@ export class AppComponent {
       left: 0
     }
   };
-  imgData: any[] = []; i: number = 0;
   modalShow: boolean = false;
   doc = new jsPDF();
 
@@ -67,6 +66,8 @@ export class AppComponent {
     }
     if (f && this.isImage(f)) {
       this.image = f;
+    } else {
+      alert("This file type is not supported");
     }
   }
 
