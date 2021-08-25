@@ -24,15 +24,15 @@ export class AppComponent {
     exportImageIcon: 'arrow_forward',
     editorDimensions: {
       width: '100%',
-      height: '100%'
+      height: '90%'
     },
     extraCss: {
       position: 'absolute',
-      top: 0,
+      top: '56px',
       left: 0
     }
   };
-  modalShow: boolean = false;
+  modalShow: boolean = false; inputShow: boolean = true;
   doc = new jsPDF();
 
 
@@ -66,6 +66,7 @@ export class AppComponent {
     }
     if (f && this.isImage(f)) {
       this.image = f;
+      this.inputShow = false;
     } else {
       alert("This file type is not supported");
     }
@@ -90,6 +91,7 @@ export class AppComponent {
   exitEditor(message: any) {
     console.log(message);
     this.image = null;
+    this.inputShow = true;
   }
 
   // handles the result emitted by the editor
@@ -117,6 +119,8 @@ export class AppComponent {
 
   modalFn(val: boolean) {
     this.modalShow = false;
+    this.inputShow = true;
+    document.getElementsByTagName('app-root')[0].removeAttribute("style");
     if (val) {
       this.doc.addPage();
     } else {

@@ -1,3 +1,8 @@
+<!-- header -->
+<mat-toolbar color="primary">
+  <span>Document Scanner</span>
+</mat-toolbar>
+
 <!--Doc Scanner Component-->
 <ngx-doc-scanner *ngIf="image"
                  [file]="image"
@@ -9,14 +14,14 @@
 </ngx-doc-scanner>
 
 <!--Drop Zone & File Input-->
-<div fxFlex="100" fxLayoutAlign="space-around" style="height: 80vh; padding: 24px;">
+<div style="padding: 24px;" *ngIf="inputShow">
   <div #dropZone
-       class="dropZone"
-       [ngClass]="{'drop-hover': overZone}"
-       (drop)="$event.preventDefault(); dropFile($event)"
-       (dragleave)="$event.preventDefault(); overZone = false;"
-       (dragover)="$event.preventDefault(); overZone = true;"
-       (click)="hiddenInput.click()">
+        class="dropZone"
+        [ngClass]="{'drop-hover': overZone}"
+        (drop)="$event.preventDefault(); dropFile($event)"
+        (dragleave)="$event.preventDefault(); overZone = false;"
+        (dragover)="$event.preventDefault(); overZone = true;"
+        (click)="hiddenInput.click()">
     <div fxLayout="column" fxFlex="100"  fxLayoutAlign="space-around" style="text-align: center">
       <span class="inner-text" style="margin-top: auto; text-align: center">Drop an image here, or click to upload</span>
       <mat-icon color="primary" class="cloud-icon" style="margin-bottom:auto; margin-top: 12px; font-size: 64px;">cloud_upload</mat-icon>
@@ -33,6 +38,7 @@
   <mat-spinner style="z-index: 500; margin: auto; width: 100px"></mat-spinner>
 </div>
 
+<!-- Confirming Modal -->
 <div class="modal" *ngIf="modalShow">
   <div class="modal-content">
     <h4>Do you want to add another image to the pdf?</h4>

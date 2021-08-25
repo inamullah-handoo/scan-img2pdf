@@ -9,6 +9,7 @@ import { NgxDocumentScannerModule } from 'ngx-document-scanner';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 
 // set the location of the OpenCV files
@@ -27,6 +28,7 @@ const openCVConfig: OpenCVConfig = {
     FlexLayoutModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

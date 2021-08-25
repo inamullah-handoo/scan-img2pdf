@@ -5,14 +5,14 @@ $primary_trans: rgba(123, 31, 162, 0.15);
   border: 2px dashed $primary;
   width: 600px;
   height: 300px;
-  max-width: 98vw;
+  max-width: 100%;
   max-height: 50vh;
   transition: 0.5s all;
-  margin-top: auto;
-  margin-bottom: auto;
+  margin: auto;
   cursor: pointer;
   border-radius: 20px;
   padding: 18px;
+  margin-top: 32px;
 }
 
 .drop-hover {
