@@ -55,3 +55,11 @@ $icon_size: 64px;
     }
   }
 }
+
+:host::ng-deep ngx-doc-scanner {
+  button {
+    width: fit-content;
+    border-radius: 0;
+    padding: 0 10px;
+  }
+}

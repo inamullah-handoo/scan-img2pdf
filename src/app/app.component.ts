@@ -92,6 +92,7 @@ export class AppComponent {
     console.log(message);
     this.image = null;
     this.inputShow = true;
+    document.getElementsByTagName('app-root')[0].removeAttribute("style");
   }
 
   // handles the result emitted by the editor
@@ -138,5 +139,37 @@ export class AppComponent {
   editorState(processing: any) {
     this.processing = null;
     this.processing = processing;
+    if (document.getElementsByTagName('button')[0].innerHTML.indexOf('Exit') > 0 || document.getElementsByTagName('button')[0].innerHTML.indexOf('Back') > 0) {
+
+    } else {
+      let arr = document.getElementsByTagName('button');
+      for (let i = 0; i < arr.length; i++) {
+        const el = arr[i];
+        let text = '';
+        switch (el.getAttribute('name')) {
+          case 'exit':
+            text = 'Exit';
+            break;
+          case 'rotate':
+            text = 'Rotate';
+            break;
+          case 'done_crop':
+            text = 'Done';
+            break;
+          case 'back':
+            text = 'Back';
+            break;
+          case 'filter':
+            text = 'Filter';
+            break;
+          case 'upload':
+            text = 'Next';
+            break;
+          default:
+            break;
+        }
+        el.innerHTML = el.innerHTML + text;
+      }
+    }
   }
 }
