@@ -100,7 +100,7 @@ export class AppComponent {
     this.modalShow = true;
     alert('Start');
     let reader = new FileReader();
-    reader.onloadend = async () => {
+    reader.onloadend = () => {
       this.image = null;
       const imgProps = this.doc.getImageProperties(String(reader.result));
       const margin = 0.1;
