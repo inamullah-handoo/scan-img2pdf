@@ -30,10 +30,6 @@ export class AppComponent {
       position: 'absolute',
       top: '56px',
       left: 0
-    },
-    maxImageDimensions: {
-      width: 10000,
-      height: 10000
     }
   };
   inputShow: boolean = true;
@@ -118,7 +114,7 @@ export class AppComponent {
       const ratio = Math.min(widthRatio, heightRatio);
       const w = imgProps.width * ratio;
       const h = imgProps.height * ratio;
-      this.doc.addImage(String(reader.result), "JPEG", x, y, w, h, undefined, "FAST");
+      this.doc.addImage(String(reader.result), "JPEG", x, y, w, h, undefined, "SLOW");
     };
     reader.readAsDataURL(result);
     document.getElementsByTagName('ngx-doc-scanner')[0].remove();
