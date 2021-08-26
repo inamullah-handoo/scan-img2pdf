@@ -118,7 +118,7 @@ export class AppComponent {
       const ratio = Math.min(widthRatio, heightRatio);
       const w = imgProps.width * ratio;
       const h = imgProps.height * ratio;
-      this.doc.addImage(String(reader.result), "JPEG", x, y, w, h, undefined, "NONE");
+      this.doc.addImage(String(reader.result), "JPEG", x, y, w, h, undefined, "FAST");
     };
     reader.readAsDataURL(result);
     document.getElementsByTagName('ngx-doc-scanner')[0].remove();
