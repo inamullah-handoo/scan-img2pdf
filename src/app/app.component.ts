@@ -30,6 +30,10 @@ export class AppComponent {
       position: 'absolute',
       top: '56px',
       left: 0
+    },
+    maxImageDimensions: {
+      width: 10000,
+      height: 10000
     }
   };
   inputShow: boolean = true;
@@ -100,7 +104,6 @@ export class AppComponent {
 
   // handles the result emitted by the editor
   editResult(result: Blob) {
-    console.log(document.getElementsByClassName('modal'));
     document.getElementsByClassName('modal')[0].classList.add('show');
     let reader = new FileReader();
     reader.onloadend = () => {
