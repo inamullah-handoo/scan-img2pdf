@@ -1,29 +1,12 @@
 $primary: rgb(123, 31, 162);
 $primary_trans: rgba(123, 31, 162, 0.15);
+$icon_size: 64px;
 
 .show {
   display: block !important;
 }
 
-.relative {
-  position: relative;
-  padding: 18px;
-  margin-top: 32px;
-  height: 80vh;
-}
-
-.imgAdded {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .dropZone {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   border: 2px dashed $primary;
   width: 600px;
   height: 300px;
@@ -32,7 +15,7 @@ $primary_trans: rgba(123, 31, 162, 0.15);
   transition: 0.5s all;
   cursor: pointer;
   border-radius: 20px;
-  background-color: #fff;
+  margin: auto;
 }
 
 .drop-hover {
@@ -43,7 +26,6 @@ $primary_trans: rgba(123, 31, 162, 0.15);
   font-size: 27px;
 }
 
-$icon_size: 64px;
 
 .cloud-icon {
   font-size: $icon_size;
@@ -57,19 +39,19 @@ $icon_size: 64px;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.3);
-  // z-index: 100000;
   display: none;
 
   .modal-content {
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: white;
     border: 1px solid #888;
     border-radius: 16px;
     padding: 24px;
-
+    width: 250px;
+    max-width: 80%;
 
     h3 {
       margin: 0;

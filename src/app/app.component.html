@@ -2,55 +2,34 @@
 <mat-toolbar color="primary">
   <span>Document Scanner</span>
 </mat-toolbar>
-<!-- <div *ngIf="showMe">
-  Image added.<br>Add one more?
-  <button mat-raised-button (click)="modalFn(true);" color="primary">
-    Yes
-  </button>
-  <button mat-raised-button (click)="modalFn(false);" color="primary">
-    No
-  </button>
-</div> -->
+
 <!--Drop Zone & File Input-->
-<div class="relative">
-  <div class="imgAdded">
-    Image added.<br>Add one more?
-    <button mat-raised-button (click)="modalFn(true);" color="primary">
-      Yes
-    </button>
-    <button mat-raised-button (click)="modalFn(false);" color="primary">
-      No
-    </button>
-  </div>
-  <div *ngIf="inputShow">
-    <div #dropZone
-          class="dropZone"
-          [ngClass]="{'drop-hover': overZone}"
-          (drop)="$event.preventDefault(); dropFile($event)"
-          (dragleave)="$event.preventDefault(); overZone = false;"
-          (dragover)="$event.preventDefault(); overZone = true;"
-          (click)="hiddenInput.click()">
-      <div fxLayout="column" fxFlex="100"  fxLayoutAlign="space-around" style="text-align: center">
-        <span class="inner-text" style="margin-top: auto; text-align: center">Drop an image here, or click to upload</span>
-        <mat-icon color="primary" class="cloud-icon" style="margin-bottom:auto; margin-top: 12px; font-size: 64px;">cloud_upload</mat-icon>
-      </div>
+<div *ngIf="inputShow" style="padding: 24px;">
+  <div #dropZone
+        class="dropZone"
+        [ngClass]="{'drop-hover': overZone}"
+        (drop)="$event.preventDefault(); dropFile($event)"
+        (dragleave)="$event.preventDefault(); overZone = false;"
+        (dragover)="$event.preventDefault(); overZone = true;"
+        (click)="hiddenInput.click()">
+    <div fxLayout="column" fxFlex="100"  fxLayoutAlign="space-around" style="text-align: center">
+      <span class="inner-text" style="margin-top: auto; text-align: center">Drop an image here, or click to upload</span>
+      <mat-icon color="primary" class="cloud-icon" style="margin-bottom:auto; margin-top: 12px; font-size: 64px;">cloud_upload</mat-icon>
     </div>
   </div>
 </div>
 <input #hiddenInput type="file" (change)="loadFile($event)" style="display:none" accept="image/png, image/jpg, image/jpeg">
 
-
 <!--Doc Scanner Component-->
-<div>
-  <ngx-doc-scanner *ngIf="image"
-                 [file]="image"
-                 (editResult)="editResult($event)"
-                 (exitEditor)="exitEditor('exit')"
-                 (error)="onError($event)"
-                 (processing)="editorState($event)"
-                 [config]="config">
+<ngx-doc-scanner *ngIf="image"
+                [file]="image"
+                (editResult)="editResult($event)"
+                (exitEditor)="exitEditor('exit')"
+                (error)="onError($event)"
+                (processing)="editorState($event)"
+                [config]="config">
 </ngx-doc-scanner>
-</div>
+
 
 <!--Loading Indicator-->
 <div style="width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.16); position: fixed; top: 0; left: 0; z-index: 100"
@@ -63,9 +42,10 @@
 <!-- Confirming Modal -->
 <div class="modal">
   <div class="modal-content">
-    <h4>Do you want to add another image to the pdf?</h4>
+    <h4>Image added</h4>
+    <p>Do you want to add another image to pdf?</p>
     <div>
-      <div fxFlex="100"  fxLayoutAlign="space-around">
+      <div fxFlex="100" fxLayoutAlign="space-around">
         <button mat-raised-button (click)="modalFn(true);" color="primary">
           Yes
         </button>

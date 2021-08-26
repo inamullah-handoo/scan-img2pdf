@@ -24,16 +24,16 @@ export class AppComponent {
     exportImageIcon: 'arrow_forward',
     editorDimensions: {
       width: '100%',
-      height: '90%'
+      height: '88%'
     },
     extraCss: {
       position: 'absolute',
-      top: 0,
+      top: '56px',
       left: 0
     }
   };
-  modalShow: boolean = false; inputShow: boolean = true;
-  doc = new jsPDF(); showMe: boolean = false;
+  inputShow: boolean = true;
+  doc = new jsPDF();
 
 
   constructor() { }
@@ -100,7 +100,6 @@ export class AppComponent {
 
   // handles the result emitted by the editor
   editResult(result: Blob) {
-    this.showMe = true;
     console.log(document.getElementsByClassName('modal'));
     document.getElementsByClassName('modal')[0].classList.add('show');
     let reader = new FileReader();
@@ -116,18 +115,16 @@ export class AppComponent {
       const ratio = Math.min(widthRatio, heightRatio);
       const w = imgProps.width * ratio;
       const h = imgProps.height * ratio;
-      this.doc.addImage(String(reader.result), "JPEG", x, y, w, h);
+      this.doc.addImage(String(reader.result), "JPEG", x, y, w, h, undefined, "NONE");
     };
     reader.readAsDataURL(result);
     document.getElementsByTagName('ngx-doc-scanner')[0].remove();
   }
 
   modalFn(val: boolean) {
-    // this.modalShow = false;
     document.getElementsByClassName('modal')[0].classList.remove('show');
     this.inputShow = true;
     this.image = null;
-    this.showMe = false;
     document.getElementsByTagName('app-root')[0].removeAttribute("style");
     if (val) {
       this.doc.addPage();
@@ -146,7 +143,7 @@ export class AppComponent {
   editorState(processing: any) {
     this.processing = null;
     this.processing = processing;
-    if (document.getElementsByTagName('button')[2] && !(document.getElementsByTagName('button')[2].innerHTML.indexOf('Exit') > 0 || document.getElementsByTagName('button')[2].innerHTML.indexOf('Back') > 0)) {
+    if (document.getElementsByTagName('button')[0] && !(document.getElementsByTagName('button')[0].innerHTML.indexOf('Exit') > 0 || document.getElementsByTagName('button')[0].innerHTML.indexOf('Back') > 0)) {
       let arr = document.getElementsByTagName('button');
       for (let i = 0; i < arr.length; i++) {
         const el = arr[i];
